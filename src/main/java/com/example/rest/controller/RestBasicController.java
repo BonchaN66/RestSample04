@@ -67,12 +67,16 @@ public class RestBasicController {
 		
 		int id = 3;  //固定でID = 3 に新規登録（post）処理した想定。
 		
+		// 正常系
+		
+		//レスポンスのヘッダー情報生成
 		URI location = ServletUriComponentsBuilder  
 				.fromCurrentRequest()
 				.path("/{id}")
 				.buildAndExpand(id)
 				.toUri();
 		
+		// レスポンスボディ
 		Map<String, Object> body = Map.of("id", id, "name" , name);
 		
 		return ResponseEntity.created(location).body(body);
